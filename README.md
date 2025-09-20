@@ -114,5 +114,4 @@ Formulario modal interactivo con campos específicos para:
 
 ## 📧 Contacto
 
-Para consultas sobre esta landing page: contacto@bigloi.com# trigger
-# trigger
+Para consultas sobre esta landing page: contacto@bigloi.com
