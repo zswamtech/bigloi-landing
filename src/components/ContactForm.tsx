@@ -68,14 +68,33 @@ export function ContactForm({ type, isOpen, onClose }: ContactFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envío del formulario
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      // Envío real al API
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          type
+        }),
+      });
 
-    // Aquí iría la lógica real de envío (email, API, etc.)
-    console.log('Form submitted:', { type, ...formData });
+      const result = await response.json();
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar formulario');
+      }
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      // Mostrar error al usuario
+      alert('Error al enviar el formulario. Por favor intenta nuevamente.');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
