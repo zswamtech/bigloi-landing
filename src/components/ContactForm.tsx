@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 interface ContactFormProps {
-  type: 'university' | 'hospital' | 'government' | 'investor';
+  type: 'university' | 'hospital' | 'government';
   isOpen: boolean;
   onClose: () => void;
 }
@@ -11,8 +11,7 @@ interface ContactFormProps {
 const formTitles = {
   university: 'Expresar Interés - Universidades',
   hospital: 'Conocer Propuesta - Hospitales',
-  government: 'Consultar Proyecto - Gobierno',
-  investor: 'Conocer Oportunidad - Inversionistas'
+  government: 'Colaboración e Integración - Aliados Estratégicos'
 };
 
 const formFields = {
@@ -31,18 +30,11 @@ const formFields = {
     collaboration: '¿Interés en ser sitio piloto?'
   },
   government: {
-    organization: 'Entidad',
-    department: 'Dependencia',
-    focus: 'Área de impacto de interés',
-    experience: '¿Experiencia en políticas de salud digital?',
-    collaboration: '¿Cómo podría apoyar el proyecto?'
-  },
-  investor: {
-    organization: 'Fondo/Empresa',
-    department: 'Tipo de inversión',
-    focus: 'Sector de inversión preferido',
-    experience: '¿Experiencia en healthtech/blockchain?',
-    collaboration: '¿Ticket de inversión típico?'
+    organization: 'Organización/Entidad',
+    department: 'Departamento/Área de interés',
+    focus: 'Área de colaboración propuesta',
+    experience: '¿Experiencia en innovación tecnológica/salud digital?',
+    collaboration: '¿Cómo podría contribuir al proyecto?'
   }
 };
 

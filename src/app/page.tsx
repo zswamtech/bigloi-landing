@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { ContactForm } from '../components/ContactForm';
 
 export default function InvestigationLandingPage() {
-  const [activeForm, setActiveForm] = useState<'university' | 'hospital' | 'government' | 'investor' | null>(null);
+  const [activeForm, setActiveForm] = useState<'university' | 'hospital' | 'government' | null>(null);
 
-  const openForm = (type: 'university' | 'hospital' | 'government' | 'investor') => {
+  const openForm = (type: 'university' | 'hospital' | 'government') => {
     setActiveForm(type);
   };
 
@@ -587,7 +587,7 @@ export default function InvestigationLandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="bg-slate-800 rounded-2xl p-8 text-center">
               <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl">🎓</span>
@@ -624,33 +624,16 @@ export default function InvestigationLandingPage() {
 
             <div className="bg-slate-800 rounded-2xl p-8 text-center">
               <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">🏛️</span>
+                <span className="text-2xl">🤝</span>
               </div>
-              <h3 className="text-xl font-bold mb-4">Gobierno</h3>
+              <h3 className="text-xl font-bold mb-4">Colaboración e Integración</h3>
               <p className="text-sm text-slate-300 mb-6">
-                Impacto social medible, datos para políticas públicas, transparencia total
+                Únete como aliado estratégico en la transformación del sector farmacéutico
               </p>
               <button
                 type="button"
                 onClick={() => openForm('government')}
                 className="block w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition duration-300"
-              >
-                Consultar Proyecto
-              </button>
-            </div>
-
-            <div className="bg-slate-800 rounded-2xl p-8 text-center">
-              <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">💼</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Inversionistas</h3>
-              <p className="text-sm text-slate-300 mb-6">
-                Oportunidad de inversión en tecnología con impacto social demostrable
-              </p>
-              <button
-                type="button"
-                onClick={() => openForm('investor')}
-                className="block w-full px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-xl transition duration-300"
               >
                 Conocer Oportunidad
               </button>

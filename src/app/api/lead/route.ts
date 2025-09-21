@@ -12,14 +12,13 @@ interface FormData {
   experience?: string;
   collaboration?: string;
   message?: string;
-  type: 'university' | 'hospital' | 'government' | 'investor';
+  type: 'university' | 'hospital' | 'government';
 }
 
 const stakeholderLabels = {
   university: 'Universidad',
   hospital: 'Hospital',
-  government: 'Gobierno',
-  investor: 'Inversionista'
+  government: 'Colaboración e Integración'
 };
 
 // Create transporter (will be configured with environment variables)
