@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+export const runtime = 'nodejs';
 import nodemailer from 'nodemailer';
 
 // Types for form data

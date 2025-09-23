@@ -33,3 +33,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# análisis local (no desplegar en landing)
+ml_analysis/
+ml_analysis/**/*.ipynb
+ml_analysis/**/*.{pdf,png,jpg,jpeg,svg}
+
+# artefactos locales no relacionados al sitio
+dashboard_base64.txt
+propuesta-*.html
