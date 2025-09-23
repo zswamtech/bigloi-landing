@@ -821,6 +821,49 @@ export default function InvestigationLandingPage() {
         </div>
       </section>
 
+      {/* Contribuye con Datos */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Contribuye con Datos</h2>
+            <p className="text-slate-600 max-w-3xl mx-auto">
+              Si eres institución de salud o profesional/paciente y deseas apoyar, puedes compartir información usando
+              nuestras plantillas. Los envíos se procesan con nuestro pipeline y pueden alimentar el análisis NLP.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-2xl shadow p-6 border border-slate-200">
+              <div className="text-sm text-slate-500">Instituciones (IPS/Secretarías)</div>
+              <h3 className="font-semibold mb-2">Inventarios y Consumo</h3>
+              <p className="text-sm text-slate-600 mb-4">Descarga la plantilla y comparte datos de medicamentos estratégicos (campos compatibles con nuestro modelo).</p>
+              <div className="flex gap-3">
+                <a className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm" href="/templates/hospital_intake_template.csv" download>
+                  Descargar plantilla CSV
+                </a>
+                <a className="px-4 py-2 rounded-lg bg-slate-800 text-white text-sm" href="mailto:contacto@bigloi.com?subject=Intake%20Hospitalario%20BigLoI">
+                  Enviar por correo
+                </a>
+              </div>
+              <p className="text-xs text-slate-500 mt-3">También puedes realizar un POST a <code>/api/intake/hospital</code> con JSON o CSV simple.</p>
+            </div>
+            <div className="bg-white rounded-2xl shadow p-6 border border-slate-200">
+              <div className="text-sm text-slate-500">Profesionales y Personas</div>
+              <h3 className="font-semibold mb-2">Feedback de Servicio</h3>
+              <p className="text-sm text-slate-600 mb-4">Comparte experiencias (texto libre) y relación con servicios/medicamentos para fortalecer el análisis de sentimientos.</p>
+              <div className="flex gap-3">
+                <a className="px-4 py-2 rounded-lg bg-green-600 text-white text-sm" href="/templates/feedback_personas_template.csv" download>
+                  Descargar plantilla CSV
+                </a>
+                <a className="px-4 py-2 rounded-lg bg-slate-800 text-white text-sm" href="mailto:contacto@bigloi.com?subject=Feedback%20Personas%20BigLoI">
+                  Enviar por correo
+                </a>
+              </div>
+              <p className="text-xs text-slate-500 mt-3">También puedes realizar un POST a <code>/api/intake/feedback</code> con JSON o CSV simple.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Consortium */}
       <section id="consorcio" className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
         <div className="max-w-7xl mx-auto px-6">
