@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 import nodemailer from 'nodemailer';
+import { getSupabaseServer, INTAKE_BUCKET } from '../../../../lib/supabaseServer';
 
 function createTransporter() {
   return nodemailer.createTransport({
@@ -19,13 +20,26 @@ export async function POST(request: Request) {
     const contentType = request.headers.get('content-type') || '';
     let payload: any = null;
     let csvText: string | null = null;
+    let fileBuffer: Buffer | null = null;
+    let fileName: string | null = null;
 
-    if (contentType.includes('application/json')) {
+    if (contentType.includes('multipart/form-data')) {
+      const form = await (request as any).formData();
+      const file = form.get('file') as File | null;
+      if (file) {
+        const arrayBuffer = await file.arrayBuffer();
+        fileBuffer = Buffer.from(arrayBuffer);
+        fileName = file.name || `hospital_intake_${Date.now()}.csv`;
+      }
+      const json = form.get('json') as string | null;
+      if (json) {
+        try { payload = JSON.parse(json); } catch {}
+      }
+    } else if (contentType.includes('application/json')) {
       payload = await request.json();
     } else if (contentType.includes('text/csv') || contentType.includes('text/plain')) {
       csvText = await request.text();
     } else {
-      // intentar ambas
       try { payload = await request.json(); } catch { csvText = await request.text(); }
     }
 
@@ -37,6 +51,24 @@ export async function POST(request: Request) {
     const subject = 'Ingreso de datos hospitalarios - BigLoI';
     const bodyIntro = '<p>Se recibió un envío para intake hospitalario.</p>';
 
+    // Subir a Supabase Storage si hay archivo/csv
+    try {
+      const supabase = getSupabaseServer();
+      const baseName = fileName || 'hospital_intake.csv';
+      const ts = Date.now();
+      if (fileBuffer) {
+        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}`, fileBuffer, { upsert: true, contentType: 'text/csv' });
+      } else if (csvText) {
+        const buf = Buffer.from(csvText);
+        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}` , buf, { upsert: true, contentType: 'text/csv' } as any);
+      } else if (payload) {
+        const buf = Buffer.from(JSON.stringify(payload));
+        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_payload.json`, buf, { upsert: true, contentType: 'application/json' } as any);
+      }
+    } catch (e) {
+      console.error('Supabase upload error', e);
+    }
+
     if (process.env.SMTP_PASS) {
       const transporter = createTransporter();
       const mailOptions: nodemailer.SendMailOptions = {
@@ -44,7 +76,7 @@ export async function POST(request: Request) {
         to: process.env.CONTACT_EMAIL || 'contacto@bigloi.com',
         subject,
         html: `${bodyIntro}${payload ? `<pre>${JSON.stringify(payload, null, 2)}</pre>` : ''}`,
-        attachments: csvText ? [{ filename: 'hospital_intake.csv', content: csvText }] : [],
+        attachments: csvText ? [{ filename: 'hospital_intake.csv', content: csvText }] : fileBuffer && fileName ? [{ filename: fileName, content: fileBuffer }] : [],
       };
       try { await transporter.sendMail(mailOptions); } catch (e) { console.error('Mail error', e); }
     }

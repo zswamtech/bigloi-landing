@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { ContactForm } from '../components/ContactForm';
 import ResearchHighlights from '../components/ResearchHighlights';
 import ResearchGallery from '../components/ResearchGallery';
+import IntakeFormHospital from '../components/IntakeFormHospital';
+import IntakeFormFeedback from '../components/IntakeFormFeedback';
+import IntakeStatusPanel from '../components/IntakeStatusPanel';
 
 export default function InvestigationLandingPage() {
   const [activeForm, setActiveForm] = useState<'university' | 'hospital' | 'government' | null>(null);
@@ -845,6 +848,10 @@ export default function InvestigationLandingPage() {
                 </a>
               </div>
               <p className="text-xs text-slate-500 mt-3">También puedes realizar un POST a <code>/api/intake/hospital</code> con JSON o CSV simple.</p>
+              <div className="mt-4">
+                <div className="text-xs font-medium text-slate-700 mb-2">Sube tu CSV directamente</div>
+                <IntakeFormHospital />
+              </div>
             </div>
             <div className="bg-white rounded-2xl shadow p-6 border border-slate-200">
               <div className="text-sm text-slate-500">Profesionales y Personas</div>
@@ -859,7 +866,14 @@ export default function InvestigationLandingPage() {
                 </a>
               </div>
               <p className="text-xs text-slate-500 mt-3">También puedes realizar un POST a <code>/api/intake/feedback</code> con JSON o CSV simple.</p>
+              <div className="mt-4">
+                <div className="text-xs font-medium text-slate-700 mb-2">Formulario rápido</div>
+                <IntakeFormFeedback />
+              </div>
             </div>
+          </div>
+          <div className="mt-8">
+            <IntakeStatusPanel />
           </div>
         </div>
       </section>
