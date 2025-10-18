@@ -54,16 +54,18 @@ export async function POST(request: Request) {
     // Subir a Supabase Storage si hay archivo/csv
     try {
       const supabase = getSupabaseServer();
-      const baseName = fileName || 'hospital_intake.csv';
-      const ts = Date.now();
-      if (fileBuffer) {
-        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}`, fileBuffer, { upsert: true, contentType: 'text/csv' });
-      } else if (csvText) {
-        const buf = Buffer.from(csvText);
-        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}` , buf, { upsert: true, contentType: 'text/csv' } as any);
-      } else if (payload) {
-        const buf = Buffer.from(JSON.stringify(payload));
-        await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_payload.json`, buf, { upsert: true, contentType: 'application/json' } as any);
+      if (supabase) {
+        const baseName = fileName || 'hospital_intake.csv';
+        const ts = Date.now();
+        if (fileBuffer) {
+          await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}`, fileBuffer, { upsert: true, contentType: 'text/csv' });
+        } else if (csvText) {
+          const buf = Buffer.from(csvText);
+          await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_${baseName}` , buf, { upsert: true, contentType: 'text/csv' } as any);
+        } else if (payload) {
+          const buf = Buffer.from(JSON.stringify(payload));
+          await supabase.storage.from(INTAKE_BUCKET).upload(`hospital/${ts}_payload.json`, buf, { upsert: true, contentType: 'application/json' } as any);
+        }
       }
     } catch (e) {
       console.error('Supabase upload error', e);

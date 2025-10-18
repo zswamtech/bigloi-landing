@@ -51,15 +51,17 @@ export async function POST(request: Request) {
     // Subida a Supabase
     try {
       const supabase = getSupabaseServer();
-      const ts = Date.now();
-      if (fileBuffer) {
-        await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_${fileName}`, fileBuffer, { upsert: true, contentType: 'text/csv' });
-      } else if (csvText) {
-        const buf = Buffer.from(csvText);
-        await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_feedback.csv`, buf, { upsert: true, contentType: 'text/csv' } as any);
-      } else if (payload) {
-        const buf = Buffer.from(JSON.stringify(payload));
-        await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_payload.json`, buf, { upsert: true, contentType: 'application/json' } as any);
+      if (supabase) {
+        const ts = Date.now();
+        if (fileBuffer) {
+          await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_${fileName}`, fileBuffer, { upsert: true, contentType: 'text/csv' });
+        } else if (csvText) {
+          const buf = Buffer.from(csvText);
+          await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_feedback.csv`, buf, { upsert: true, contentType: 'text/csv' } as any);
+        } else if (payload) {
+          const buf = Buffer.from(JSON.stringify(payload));
+          await supabase.storage.from(INTAKE_BUCKET).upload(`feedback/${ts}_payload.json`, buf, { upsert: true, contentType: 'application/json' } as any);
+        }
       }
     } catch (e) {
       console.error('Supabase upload error', e);
