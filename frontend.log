@@ -1,0 +1,39 @@
+
+> landing@0.1.0 dev
+> next dev -p 3003
+
+  ▲ Next.js 14.2.32
+  - Local:        http://localhost:3003
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1693ms
+ ○ Compiling /secop ...
+ ⨯ ./src/app/secop/page.tsx:1:1
+Module not found: Can't resolve '@/components/SecopDashboard'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m [33mSecopDashboard[39m [36mfrom[39m [32m'@/components/SecopDashboard'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mexport[39m [36mconst[39m metadata [33m=[39m {[0m
+[0m [90m 4 |[39m   title[33m:[39m [32m'Dashboard SECOP Farmacéutico | BigLoI'[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./src/app/secop/page.tsx:1:1
+Module not found: Can't resolve '@/components/SecopDashboard'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m [33mSecopDashboard[39m [36mfrom[39m [32m'@/components/SecopDashboard'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mexport[39m [36mconst[39m metadata [33m=[39m {[0m
+[0m [90m 4 |[39m   title[33m:[39m [32m'Dashboard SECOP Farmacéutico | BigLoI'[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./src/app/secop/page.tsx:1:1
+Module not found: Can't resolve '@/components/SecopDashboard'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m [33mSecopDashboard[39m [36mfrom[39m [32m'@/components/SecopDashboard'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+[0m [90m 3 |[39m [36mexport[39m [36mconst[39m metadata [33m=[39m {[0m
+[0m [90m 4 |[39m   title[33m:[39m [32m'Dashboard SECOP Farmacéutico | BigLoI'[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ GET /secop?id=2e56af2f-f775-421d-a938-9099180a7232&vscodeBrowserReqId=1760738462825 500 in 2561ms

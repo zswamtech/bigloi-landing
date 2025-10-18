@@ -33,12 +33,15 @@ export default function InvestigationLandingPage() {
                 <div className="text-xs text-slate-500">Crisis Farmacéutica Colombia</div>
               </div>
             </div>
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               <a href="#problema" className="text-slate-600 hover:text-slate-900 font-medium">El Problema</a>
               <a href="#investigacion" className="text-slate-600 hover:text-slate-900 font-medium">Investigación</a>
               <a href="#solucion" className="text-slate-600 hover:text-slate-900 font-medium">Solución</a>
               <a href="#consorcio" className="text-slate-600 hover:text-slate-900 font-medium">Consorcio</a>
               <a href="#contacto" className="text-slate-600 hover:text-slate-900 font-medium">Contacto</a>
+              <a href="/secop" className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 font-medium transition-colors">
+                📊 Dashboard SECOP
+              </a>
             </div>
           </div>
         </div>
@@ -1054,6 +1057,131 @@ export default function InvestigationLandingPage() {
                   <div className="text-sm font-semibold">Consorcio de Investigación</div>
                   <div className="text-xs text-slate-400">Alianza Académica Estratégica</div>
                   <div className="text-xs text-green-400">Eje Cafetero Colombiano</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECOP Dashboard Promo Section */}
+      <section className="py-20 bg-gradient-to-r from-green-50 to-emerald-50 border-y border-green-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                📊 Dashboard SECOP Farmacéutico
+              </h2>
+              <p className="text-lg text-slate-600 mb-6">
+                Acceso en tiempo real a <strong>346 contratos públicos farmacéuticos</strong> colombianos 
+                con análisis automatizado de oportunidades comerciales y tendencias de mercado.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">6 Análisis Interactivos</h4>
+                    <p className="text-sm text-slate-600">Resumen, Geográfico, Entidades, ABC, Timeline, Búsqueda</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">COP 146.5 Billones</h4>
+                    <p className="text-sm text-slate-600">Valor total de contratos identificados en 5 departamentos</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">95.95% Precisión Farmacéutica</h4>
+                    <p className="text-sm text-slate-600">332 contratos verificados y clasificados automáticamente</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-xs">✓</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">API Profesional</h4>
+                    <p className="text-sm text-slate-600">6 endpoints REST con 167ms response time promedio</p>
+                  </div>
+                </div>
+              </div>
+
+              <a 
+                href="/secop" 
+                className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <span>🚀 Acceder al Dashboard</span>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-200">
+              <div className="space-y-6">
+                <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                  <div className="text-sm font-semibold text-slate-700 mb-2">📈 Resumen Global</div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-600">346</div>
+                      <div className="text-xs text-slate-600">Contratos Totales</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-emerald-600">332</div>
+                      <div className="text-xs text-slate-600">Farmacéuticos (96%)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                  <div className="text-sm font-semibold text-slate-700 mb-2">🗺️ Cobertura Geográfica</div>
+                  <div className="space-y-2 text-xs">
+                    <div className="flex justify-between">
+                      <span>Antioquia:</span>
+                      <span className="font-bold">187 (54%)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Cundinamarca:</span>
+                      <span className="font-bold">61 (18%)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Quindío:</span>
+                      <span className="font-bold">55 (16%)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Caldas:</span>
+                      <span className="font-bold">24 (7%)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Risaralda:</span>
+                      <span className="font-bold">19 (5%)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                  <div className="text-sm font-semibold text-slate-700 mb-2">💼 Top Compradoras</div>
+                  <div className="space-y-2 text-xs">
+                    <div className="font-semibold text-slate-900 truncate">Hospital S.S. Caldas</div>
+                    <div className="text-slate-600">COP 109.1B • 12 contratos</div>
+                  </div>
+                </div>
+
+                <div className="bg-slate-100 rounded-xl p-4 border border-slate-300">
+                  <div className="text-center text-xs text-slate-700">
+                    <div className="font-semibold mb-1">⚡ Performance</div>
+                    <div className="font-bold text-green-600">167ms Promedio</div>
+                  </div>
                 </div>
               </div>
             </div>
