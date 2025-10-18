@@ -35,7 +35,7 @@ interface TrendData {
 }
 
 const SecopMedicinesTab: React.FC<{ apiUrl?: string }> = ({ apiUrl }) => {
-  const apiBaseUrl = apiUrl || 'http://localhost:3001/api/v1';
+  const apiBaseUrl = apiUrl || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
   const [activeTab, setActiveTab] = useState('top-medicinas');
   const [topMedicinas, setTopMedicinas] = useState<Medicine[]>([]);
   const [precios, setPrecios] = useState<MedicinePrice[]>([]);

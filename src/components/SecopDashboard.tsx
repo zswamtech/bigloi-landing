@@ -84,7 +84,7 @@ export default function SecopDashboard() {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('resumen');
 
-  const baseUrl = 'http://localhost:3001/api/v1';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
 
   useEffect(() => {
     const fetchData = async () => {
